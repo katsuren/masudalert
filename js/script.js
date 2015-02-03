@@ -1,6 +1,7 @@
 var aUrl = "http://anond.hatelabo.jp/";
 var bUrl = "http://api.b.st-hatena.com/entry.count";
 var interval = 5 * 60 * 1000;
+interval = 5000;
 setTimeout(checkUpdate, interval);
 
 // 起動時に毎回クリアする
@@ -67,8 +68,11 @@ function pageRequest(url, page)
             var tb = a.eq(1).text().split("トラックバック(")[1].split(")")[0];
             var stored = localStorage[date + "_tb"];
             stored = stored == undefined ? 0 : stored;
-            if (store == 0 || tb > stored) {
+            if (stored == 0 || tb > stored) {
                 chrome.browserAction.getBadgeText({}, function(result) {
+                    if ( ! result) {
+                        result = 0;
+                    }
                     result++;
                     chrome.browserAction.setBadgeText({text:String(result)});
                 });
@@ -83,6 +87,9 @@ function pageRequest(url, page)
                 stored = stored == undefined ? 0 : stored;
                 if (data > stored) {
                     chrome.browserAction.getBadgeText({}, function(result) {
+                        if ( ! result) {
+                            result = 0;
+                        }
                         result++;
                         chrome.browserAction.setBadgeText({text:String(result)});
                     });
