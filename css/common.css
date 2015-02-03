@@ -6,3 +6,8 @@ body {
 	max-height: 400px;
 	overflow: auto;
 }
+
+#footer {
+	float: right;
+	margin: 8px;
+}
