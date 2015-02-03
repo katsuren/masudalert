@@ -1,9 +1,11 @@
-$(".section").each(function(index) {
-    var section = $(this);
-    var header = section.find("h3");
-    var link = header.find("a").eq(1);
+$("a").mouseover(function(e) {
+    if ($(this).data("checked")) {
+        return;
+    }
+    var link = $(this);
     var href = link.attr("href");
-    if (href && href.match(/.*anond\.hatelabo\.jp.*/)) {
+    var sanchor = link.find(".sanchor").html(); // 自身の記事へのリンク
+    if (href && !sanchor && (href.match(/.*anond\.hatelabo\.jp\/[0-9]+/) || href.match(/^\/[0-9]+/))) {
         link.addClass("tb");
         $.get(href, {}, function(data) {
             var data = $(data);
@@ -16,5 +18,8 @@ $(".section").each(function(index) {
             section.find(".sectionfooter").remove();
             link.append("<span>" + section.html() + "</span>");
         });
+    }
+    else {
+        link.data("checked", true);
     }
 });
