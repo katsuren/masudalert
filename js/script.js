@@ -78,7 +78,7 @@ function pageRequest(url, page)
             var tb = a.eq(1).text().split("トラックバック(")[1].split(")")[0];
             var stored = localStorage[date + "_tb"];
             stored = stored == undefined ? 0 : stored;
-            if (stored == 0 || tb > stored) {
+            if (tb > 0 && (stored == 0 || tb > stored)) {
                 chrome.browserAction.getBadgeText({}, function(result) {
                     if ( ! result) {
                         result = 0;
@@ -86,18 +86,19 @@ function pageRequest(url, page)
                     result++;
                     chrome.browserAction.setBadgeText({text:String(result)});
                 });
-                if (tb > 0) {
-                    var news = localStorage['news'] + "," + date;
-                    localStorage['news'] = news;
-                }
+                var news = localStorage['news'] + "," + date;
+                localStorage['news'] = news;
             }
             localStorage[date + "_tb"] = tb;
 
             // ブクマの数チェック
             $.get(bUrl, {url: aUrl + date}, function(data) {
+                if (data == "") {
+                    data = 0;
+                }
                 var stored = localStorage[date + "_b"];
                 stored = stored == undefined ? 0 : stored;
-                if (data > stored) {
+                if (data > 0 && (stored == 0 || data > stored)) {
                     chrome.browserAction.getBadgeText({}, function(result) {
                         if ( ! result) {
                             result = 0;
