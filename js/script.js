@@ -6,6 +6,7 @@ setTimeout(checkUpdate, interval);
 // 起動時に毎回クリアする
 localStorage['news'] = "";
 
+checkUpdate();
 function checkUpdate()
 {
     var id = localStorage["hatenaId"];
@@ -52,6 +53,7 @@ function pageRequest(url, page)
         html.find(".section").each(function(index) {
             var footer = $(this).find('.sectionfooter');
             var title = $(this).find('h3');
+            var p = $(this).find('p');
             var a = footer.find("a");
             var date = a.eq(0).attr('href').split('/')[1];
             if (date < aMonthAgo) {
@@ -59,12 +61,13 @@ function pageRequest(url, page)
             }
 
             localStorage[date] = title.text();
+            localStorage[date + "_p"] = p.eq(0).text();
 
             // トラックバックの増加チェック
             var tb = a.eq(1).text().split("トラックバック(")[1].split(")")[0];
             var stored = localStorage[date + "_tb"];
             stored = stored == undefined ? 0 : stored;
-            if (tb > stored) {
+            if (store == 0 || tb > stored) {
                 chrome.browserAction.getBadgeText({}, function(result) {
                     result++;
                     chrome.browserAction.setBadgeText({text:String(result)});

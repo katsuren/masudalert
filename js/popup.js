@@ -35,8 +35,19 @@ document.addEventListener('DOMContentLoaded', function() {
         var date = news[i];
         if (date && already[date] == undefined) {
             var title = localStorage[date];
+            var p = localStorage[date + "_p"];
             var url = "http://anond.hatelabo.jp/" + date;
-            var item = "<div><a href='" + url + "' target='_blank'>" + title + "</a></div>";
+            var tb = localStorage[date + "_tb"];
+            if ( ! tb) {
+                tb = 0;
+            }
+            var b = localStorage[date + "_b"];
+            if ( ! b) {
+                b = 0;
+            }
+            var item = '<div><a href="' + url + '" target="_blank">' + title + "<br/>";
+            item += p + "<br/>";
+            item += "トラックバック(" + tb + ")&nbsp;&nbsp; ブクマ(" + b + ")</a></div><br>";
             $("#main").append(item);
             already[date] = true;
         }
