@@ -4,7 +4,6 @@ $(".section").each(function(index) {
     var link = header.find("a").eq(1);
     var href = link.attr("href");
     if (href && href.match(/.*anond\.hatelabo\.jp.*/)) {
-    alert(href);
         link.addClass("tb");
         $.get(href, {}, function(data) {
             var data = $(data);
