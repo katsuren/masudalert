@@ -15,7 +15,15 @@ function checkUpdate()
         pageRequest(url, 1);
     }
     else {
-        // はてなID
+        // はてなID取得
+        $.get(aUrl, {}, function(data) {
+            var id = $(data).find(".username a").text();
+            if (id) {
+                localStorage["hatenaId"] = id;
+                var url = aUrl + id + '/';
+                pageRequest(url, 1);
+            }
+        });
     }
     setTimeout(checkUpdate, interval);
 }
