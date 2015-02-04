@@ -5,7 +5,8 @@ $("a").mouseover(function(e) {
     var link = $(this);
     var href = link.attr("href");
     var sanchor = link.find(".sanchor").html(); // 自身の記事へのリンク
-    if (href && !sanchor && (href.match(/.*anond\.hatelabo\.jp\/[0-9]+/) || href.match(/^\/[0-9]+/))) {
+    var datelink = link.find(".date").html(); // 日付リンク
+    if (href && !sanchor && !datelink && (href.match(/.*anond\.hatelabo\.jp\/[0-9]+/) || href.match(/^\/[0-9]+/))) {
         link.addClass("tb");
         $.get(href, {}, function(data) {
             var data = $(data);
