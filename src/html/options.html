@@ -3,8 +3,28 @@
 <head>
 	<meta charset="utf-8">
 	<title>masudalert 設定画面</title>
+	<link rel="stylesheet" href="../css/options.css" type="text/css" />
 </head>
 <body>
-	hoge
+	<div id="main">
+		<h1>masudalert 設定画面</h1>
+
+		<ul class="settings">
+			<li>
+				<label>すべての記録を消去する</label>
+				<button id="clear_button">実行</button>
+			</li>
+			<li>
+				<label>非表示にする文字列を正規表現（1行）で入力</label>
+				<button id="add_word_button">追加</button>
+				<div class="clear_words"></div>
+			</li>
+		</ul>
+	</div><!-- #main -->
+
+	<div id="footer"></div>
+
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/options.js"></script>
 </body>
 </html>

@@ -1,0 +1,60 @@
+body {
+	max-width: 800px;
+}
+
+#footer {
+	text-align: right;
+	width: 100%;
+	float: right;
+	margin: 8px;
+}
+
+#main {
+	width: 100%;
+}
+
+#main h1 {
+	text-align: center;
+}
+
+#main ul.settings {
+	list-style: none;
+	border: none;
+	zoom: 1;
+	overflow: hidden;
+	margin: 1px 16px;
+	padding: 1px 1px 0 1px;
+	background: #cccccc;
+	_border-bottom: solid 1px #cccccc;
+}
+
+#main ul.settings li {
+	list-style: none;
+	border: none;
+	float: left;
+	clear: both;
+	width: 100%;
+	margin: 0 0 1px 0;
+	padding: 4px 0;
+	background: #eeeeee;
+	border-top: solid 1px #ffffff;
+	border-button: solid 1px #e7e7e7;
+}
+
+#main ul.settings label {
+	float: left;
+	display: block;
+	width: 150px;
+	padding-left: 2px;
+}
+
+button {
+	margin: 5px;
+	padding: 10px 24px;
+}
+
+.word_input {
+	height: 24px;
+	width: 280px;
+	margin-left: 160px;
+}
