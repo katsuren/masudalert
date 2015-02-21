@@ -57,6 +57,8 @@ var applyTrackback = function() {
             section.find(".sectionfooter").remove();
             section.html(section.html().replace(/<br \/>/g, "\n"));
             section.html(section.html().replace(/<\/p>/g, "</p>\n"));
+            section.html(section.html().replace(/<\/blockquote>/g, "<<\n"));
+            section.html(section.html().replace(/<blockquote>/g, ">>\n"));
             localStorage['tbbody'] = section.text().replace(/\n\n/g, "\n");
         });
     }
