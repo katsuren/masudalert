@@ -19,7 +19,9 @@ var addWordInput = function(id) {
     if ( ! id) {
         var max = localStorage["word_length"] || 0;
         max = parseInt(max) + 1;
-        localStorage["word_length"] = max;
+        chrome.storage.local.set({"word_length": max}, function(e) {
+            localStorage["word_length"] = max;
+        });
         id = max.toString();
     }
     var block = "";
