@@ -55,10 +55,15 @@ var applyTrackback = function() {
             section.find("#rectangle-middle").remove();
             section.find(".sectionfooter").next().remove();
             section.find(".sectionfooter").remove();
-            section.html(section.html().replace(/<br \/>/g, "\n"));
             section.html(section.html().replace(/<\/p>/g, "</p>\n"));
             section.html(section.html().replace(/<\/blockquote>/g, "<<\n"));
             section.html(section.html().replace(/<blockquote>/g, ">>\n"));
+            section.find("ol li").each(function(index) {
+                $(this).replaceWith("+ " + $(this).text() + "\n");
+            });
+            section.find("ul li").each(function(index) {
+                $(this).replaceWith("- " + $(this).text() + "\n");
+            });
             localStorage['tbbody'] = section.text().replace(/\n\n/g, "\n");
         });
     }
