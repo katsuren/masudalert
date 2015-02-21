@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "masudalert",
-    "version": "1.6.3",
+    "version": "1.7.0",
 
     "description": "はてな匿名ダイアリーでトラックバックやブックマークがあったら通知する",
 
