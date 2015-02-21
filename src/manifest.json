@@ -43,5 +43,7 @@
             "js/background.js",
             "js/script.js"
         ]
-    }
+    },
+
+    "options_page": "html/options.html"
 }
