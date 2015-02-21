@@ -63,14 +63,21 @@ var deleteButtonClicked = function(thisObject, e) {
 
 // 起動処理
 var length = localStorage["word_length"] || 0;
+var names = new Array();
 for (var i = 0; i <= length; i++) {
     var id = i.toString();
     var name = "word" + id;
-    chrome.storage.local.get(name, function(data) {
-        if (data[name]) {
-            console.log(data);
-            addWordInput(id);
-            $("#cw" + id).val(data[name]);
+    names.push(name);
+}
+if (names.length > 0) {
+    chrome.storage.local.get(names, function(data) {
+        console.log(data);
+        for (var i = 0; i < names.length; i++) {
+            var name = names[i];
+            if (data[name]) {
+                addWordInput(id);
+                $("#cw" + id).val(data[name]);
+            }
         }
     });
 }
