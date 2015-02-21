@@ -1,3 +1,7 @@
+// バージョン設定
+var version = chrome.app.getDetails().version;
+$('#footer').html('version: ' + version);
+
 var id = localStorage["hatenaId"];
 if (id) {
     $("#hatenaId").val(id);
