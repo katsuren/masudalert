@@ -51,7 +51,7 @@ var commitButtonClicked = function(thisObject, e) {
 };
 var deleteButtonClicked = function(thisObject, e) {
     var id = thisObject.data("id").toString();
-    chrome.storage.local.remove(id, function(result) {
+    chrome.storage.local.remove("word" + id, function(result) {
         $("div.input_block").each(function(index) {
             if ($(this).data("id") == id) {
                 $(this).remove();
