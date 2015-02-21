@@ -30,6 +30,10 @@
             "matches": ["http://anond.hatelabo.jp/*"],
             "css": ["css/tooltip.css"],
             "js": ["js/jquery.min.js", "js/trackback.js", "js/mouseover.js"]
+        },
+        {
+            "matches": ["http://anond.hatelabo.jp/*/edit"],
+            "js": ["js/jquery.min.js", "js/edit.js"]
         }
     ],
 
