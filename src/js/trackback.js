@@ -40,12 +40,24 @@ var applyTrackback = function() {
             var date = a.eq(0).attr('href').split('/')[1];
             if ( ! footer.find('.trackback_link').get(0)) {
                 footer.prepend('<a href="' + href + '" class="trackback_link" data-tbid="' + date + '">返信</a> | ');
+                $(this).attr('id', date);
             }
         });
 
         $(".trackback_link").click(function(e) {
             var tbId = $(this).data("tbid");
             localStorage['tbid'] = tbId;
+            var section = $("#" + tbId);
+            section.find("h3:first").remove();
+            section.find(".afc").prev().remove();
+            section.find(".afc").remove();
+            section.find("#rectangle-middle").next().remove();
+            section.find("#rectangle-middle").remove();
+            section.find(".sectionfooter").next().remove();
+            section.find(".sectionfooter").remove();
+            section.html(section.html().replace(/<br \/>/g, "\n"));
+            section.html(section.html().replace(/<\/p>/g, "</p>\n"));
+            localStorage['tbbody'] = section.text().replace(/\n\n/g, "\n");
         });
     }
 };
